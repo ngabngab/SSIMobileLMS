@@ -11,12 +11,6 @@
 
     <ion-content class="padding" delegate-handle="mmaMessagesScroll" mm-state-class>
         <mm-loading hide-until="loaded">
-            <!-- Button and spinner to show previous messages. -->
-            <button ng-if="canLoadMore && !loadingPrevious" class="button button-block" ng-click="loadPrevious()">{{ 'mma.messages.loadpreviousmessages' | translate }}</button>
-            <div ng-if="loadingPrevious" class="mma-messages-showprevious-spinner-container">
-                <ion-spinner></ion-spinner>
-            </div>
-
             <section class="mma-messages-discussion-container" aria-live="polite">
                 <ion-list ng-repeat="message in messages track by $index" show-delete="data.showDelete">
 
@@ -44,13 +38,13 @@
         </mm-loading>
     </ion-content>
 
-    <ion-footer-bar class="bar-light bar-footer-adjustable" keyboard-attach>
-        <form class="mma-messages-send-message-bar" ng-submit="sendMessage(newMessage)">
+    <ion-footer-bar class="bar-light">
+        <form class="mma-messages-send-message-bar" ng-submit="sendMessage(newMessage); newMessage = '';">
             <div class="mma-messages-input-inset item-input-inset">
                 <ion-input class="item-input-wrapper">
-                    <textarea class="mm-textarea" mm-auto-focus="{{showKeyboard}}" placeholder="{{ 'mma.messages.newmessage' | translate }}" ng-model="newMessage" rows="1" mm-auto-rows mm-keep-keyboard="#mma-messages-send-message-button"></textarea>
+                    <input type="text" mm-auto-focus="{{showKeyboard}}" placeholder="{{ 'mma.messages.newmessage' | translate }}" ng-model="newMessage">
                 </ion-input>
-                <button id="mma-messages-send-message-button" type="submit" class="button button-clear button-positive" ng-disabled="!newMessage">{{ 'mma.messages.send' | translate}}</button>
+                <button type="submit" class="button button-clear button-positive" ng-disabled="!newMessage">{{ 'mma.messages.send' | translate}}</button>
             </div>
         </form>
     </ion-footer-bar>
