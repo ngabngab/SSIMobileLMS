@@ -1,0 +1,10 @@
+{
+    "appsettings": "App settings",
+    "help": "Help",
+    "changesite": "Change site",
+    "mycourses": "My courses",
+    "togglemenu": "Toggle menu",
+    "website": "Website",
+    "logout":"Logout",
+    "confirmdeletesite": "Are you sure you want to Logout?"
+}
